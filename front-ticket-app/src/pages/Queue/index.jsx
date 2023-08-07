@@ -7,6 +7,7 @@ const CardQueue = ({data}) => {
                 data.map((item, index) => (
                     <div key={index} className="grid grid-cols-2 gap-2 m-2 border-b border-brand-color">
                         <h3 className="col-span-2 text-center p-4 text-4xl text-brand-color">No: {item.number}</h3>
+                        <p className="col-span-2 text-center p-2 text-2xl text-slate-500">{item.username}</p>
                         <p className="col-span-1 bg-slate-200 rounded m-2 px-3 py-1 text-brand-color font-bold text-center">Agente: {item.agent}</p>
                         <p className="col-span-1 bg-brand-color rounded m-2 px-3 py-1 text-white text-center">MÓDULO: {item.desktop}</p>
                     </div>
@@ -22,8 +23,9 @@ const CardHistory = ({data}) => {
                 data.map((item, index) => (
                     <div key={index} className="grid grid-cols-2 gap-2 border-b border-brand-color">
                         <h3 className="col-span-2 text-center p-2 text-2xl text-slate-500">No: {item.number}</h3>
-                        <p className="col-span-1 rounded px-2 py-1 text-brand-color text-center">Agente:{item.agent}</p>
-                        <p className="col-span-1 rounded px-2 py-1 text-brand-color text-center">Módulo: {item.desktop}</p>
+                        <p className="col-span-2 text-center p-2 text-2xl text-slate-500">{item.username}</p>
+                        <p className="col-span-1 rounded px-2 py-1 text-brand-color text-center mr-2">Agente:{item.agent}</p>
+                        <p className="col-span-1 bg-brand-color rounded px-2 py-1 text-white text-center ml-2">Módulo: {item.desktop}</p>
                     </div>
                 ))
             }

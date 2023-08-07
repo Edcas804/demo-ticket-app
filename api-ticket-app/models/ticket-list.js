@@ -15,8 +15,9 @@ class TicketList {
         return this.assigned.slice(0,13);
     }
 
-    newTicket() {
-        const newTicket = new Ticket(this.nextNumber);
+
+    newTicket({username}) {
+        const newTicket = new Ticket(this.nextNumber, username);
         this.pending.push(newTicket);
         return newTicket;
     }
@@ -31,6 +32,14 @@ class TicketList {
         this.assigned.unshift(nextTicket);
         return nextTicket;
     }
+    pendingCount() {
+        return this.pending.length;
+    }
+    assignedAll() {
+        return this.assigned;
+    }
+
+
 
 
 }

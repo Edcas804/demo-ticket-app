@@ -7,7 +7,7 @@ const Layout = () => {
     return (
         <main className="grid grid-cols-12">
             <SideBar/>
-            <section className="col-span-9">
+            <section className="col-span-10 sm:col-span-9">
                 <Outlet/>
             </section>
         </main>
