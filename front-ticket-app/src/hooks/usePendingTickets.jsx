@@ -1,20 +1,19 @@
-import {useContext, useEffect, useState} from "react";
-import {SocketContext} from "../context/SocketContext.jsx";
+import { useEffect, useState } from "react"
+import { useSocketContext } from "../context/SocketContext.jsx"
 
 const usePendingTickets = () => {
+	const { socket } = useSocketContext()
+	const [pendingTickets, setPendingTickets] = useState(0)
 
-    const {socket} = useContext(SocketContext)
-    const [pendingTickets, setPendingTickets] = useState(0)
+	useEffect(() => {
+		socket.emit("get-count-pending-tickets")
+	}, [socket])
+	useEffect(() => {
+		socket.on("count-pending-tickets", (pendingTickets) => {
+			setPendingTickets(pendingTickets)
+		})
+	}, [socket])
 
-    useEffect(() => {
-        socket.emit('get-count-pending-tickets')
-    }, [socket])
-    useEffect(() => {
-        socket.on('count-pending-tickets', (pendingTickets) => {
-            setPendingTickets(pendingTickets)
-        })
-    }, [socket])
-
-    return {pendingTickets}
+	return { pendingTickets }
 }
-export default usePendingTickets;
+export default usePendingTickets
